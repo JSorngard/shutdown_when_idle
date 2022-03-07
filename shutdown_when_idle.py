@@ -3,6 +3,7 @@ def main():
     import psutil
     import time
     import argparse
+    import sys
 
     #Hard-coded defaults
     threshold = 1
@@ -51,7 +52,7 @@ def main():
         if usage < threshold:
             print("CPU usage is below threshold, initializing shutdown...")
             abortable_shutdown(wait)
-            exit()
+            sys.exit(1)
 
 def abortable_shutdown(wait = 1):
     """Schedules a shutdown <wait> minutes in the future. Allows the user to abort the shutdown by pressing enter."""
