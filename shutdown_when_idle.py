@@ -10,6 +10,7 @@ def main():
     wait = 1
 
     parser = argparse.ArgumentParser(description="Turns off the computer when the cpu usage is below a given threshold")
+
     parser.add_argument(
         "-t",
         required = False,
@@ -31,6 +32,7 @@ def main():
         default = wait,
         help = f"the number of minutes ahead to schedule the shutdown when the computer starts to idle. The shutdown can be aborted during this period. Defaults to {wait}."
     )
+
     args = vars(parser.parse_args())
     threshold = args["t"]
     pause = args["p"]
