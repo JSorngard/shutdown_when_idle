@@ -15,30 +15,31 @@ def main():
         required = False,
         type = float,
         default = threshold,
-        help = f"the cpu usage percentage under which the computer will be turned off, defaults to {threshold}%."
-        )
+        help = f"the cpu usage percentage under which the computer will be turned off, defaults to {threshold}%%."
+    )
     parser.add_argument(
-        "-p", 
+        "-p",
         required = False,
         type = int,
         default = pause,
         help = f"the script checks to see if the cpu usage is below the threshod at this interval, defaults to {pause}."
-        )
+    )
     parser.add_argument(
         "-w",
         required = False,
         type = int,
         default = wait,
         help = f"the number of minutes ahead to schedule the shutdown when the computer starts to idle. The shutdown can be aborted during this period. Defaults to {wait}."
-        )
+    )
     args = vars(parser.parse_args())
     threshold = args["t"]
     pause = args["p"]
+    wait = args["w"]
 
     print(f"Will automatically shut down the computer when the cpu usage is below {threshold}%")
     print(f"Checking every {pause} seconds")
 
-    #The first time cpu_percent() is called, it isn't always accurate
+    #The first time cpu_percent() is called it isn't always accurate
     #so we ignore the first value.
     psutil.cpu_percent()
     
