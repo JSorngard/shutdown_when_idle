@@ -4,6 +4,7 @@ def main():
     import time
     import argparse
 
+    #Hard-coded defaults
     threshold = 1
     pause = 10
     wait = 1
@@ -36,7 +37,11 @@ def main():
 
     print(f"Will automatically shut down the computer when the cpu usage is below {threshold}%")
     print(f"Checking every {pause} seconds")
+
+    #The first time cpu_percent() is called, it isn't always accurate
+    #so we ignore the first value.
     psutil.cpu_percent()
+    
     while True:
         time.sleep(pause)
         usage = psutil.cpu_percent()
