@@ -51,6 +51,7 @@ def main():
         if usage < threshold:
             print("CPU usage is below threshold, initializing shutdown...")
             abortable_shutdown(wait)
+            exit()
 
 def abortable_shutdown(wait = 1):
     """Schedules a shutdown <wait> minutes in the future. Allows the user to abort the shutdown by pressing enter."""
@@ -66,8 +67,5 @@ def abortable_shutdown(wait = 1):
         input("Press enter to abort shutdown")
         subprocess.run(["shutdown","-c"])
 
-    exit()
-
 if __name__ == '__main__':
     main()
-
