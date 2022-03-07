@@ -59,13 +59,13 @@ def abortable_shutdown(wait = 1):
     import sys
 
     if sys.platform == "win32":
-        subprocess.run(["shutdown","/s",f"/t {wait*60}"])
+        subprocess.run(f"shutdown /s /t {wait*60}")
         input("Press enter to abort shutdown")
-        subprocess.run(["shutdown","/a"])
+        subprocess.run("shutdown /a")
     else:
-        subprocess.run(["shutdown",f"{wait}"])
+        subprocess.run(f"shutdown {wait}")
         input("Press enter to abort shutdown")
-        subprocess.run(["shutdown","-c"])
+        subprocess.run("shutdown -c")
 
 if __name__ == '__main__':
     main()
